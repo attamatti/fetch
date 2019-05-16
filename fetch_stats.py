@@ -35,8 +35,8 @@ def makeplot(dict,name):
     plt.ylabel('downloads')
     plt.xlim(-1,len(vals))
     plt.tight_layout()
-    plt.show()
     plt.savefig('{0}.png'.format(name))
+    plt.show()
     plt.close()
 
 makeplot(scripts,'scripts')    
