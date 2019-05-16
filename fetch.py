@@ -2,7 +2,7 @@
 vers = '0.1'
 fetchdir = '/fbs/emsoftware2/LINUX/fbsmi/scripts/new_fetch'
 spiderexts = ("spi","mgi","sab")
-
+hashexts = ("py","sh")
 import os
 import sys
 import glob
@@ -64,14 +64,19 @@ def tag_script(script):
     
     if script.split("/")[-1].split('.')[1] in spiderexts:
         tdata = [';##############################################\n',';### FETCH COPY - ({0}{1}) - download a fresh copy if necessary\n'.format(getpass.getuser(),datetime.datetime.now()),';#############################################\n\n']
-    else:
+    elif script.split("/")[-1].split('.')[1] in hashexts:
         tdata = ['{0}'.format(sdata[0]),'##############################################\n','### FETCH COPY - ({0}{1}) - download a fresh copy if necessary\n'.format(getpass.getuser(),datetime.datetime.now()),'##############################################\n\n']
+    else:
+        tdata = ''
+    
     if script.split("/")[-1].split('.')[1] in spiderexts:
         for i in sdata:
             tdata.append(i)
-    else:
+    elif script.split("/")[-1].split('.')[1] in hashexts:
         for i in sdata[1:]:
             tdata.append(i) 
+    else:
+        tdata = sdata
     output = open('{0}'.format(script.split('/')[-1]),'w')
     for i in tdata:
         output.write(i)
