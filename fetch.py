@@ -2,7 +2,7 @@
 vers = '0.1'
 fetchdir = '/fbs/emsoftware2/LINUX/fbsmi/scripts/new_fetch'
 spiderexts = ("spi","mgi","sab")
-hashexts = ("py","sh")
+hashexts = ("py","sh","csh")
 import os
 import sys
 import glob
